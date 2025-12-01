@@ -1,0 +1,6 @@
+# MAVLink Gateway Requirements
+pymavlink==2.4.41
+websockets==12.0
+asyncio
+python-dotenv==1.0.0
+
