@@ -58,10 +58,37 @@ class MAVLinkGateway:
             self.logger.error(f"Failed to connect to MAVLink: {e}")
             return False
     
+    def _make_json_serializable(self, obj):
+        """Convert non-JSON-serializable objects to JSON-serializable ones"""
+        if isinstance(obj, dict):
+            return {key: self._make_json_serializable(value) for key, value in obj.items()}
+        elif isinstance(obj, (list, tuple)):
+            return [self._make_json_serializable(item) for item in obj]
+        elif isinstance(obj, (bytearray, bytes)):
+            return list(obj)  # Convert to list of integers
+        elif isinstance(obj, float):
+            # Handle special float values that aren't valid JSON
+            if obj != obj:  # NaN check
+                return None
+            elif obj == float('inf'):
+                return "Infinity"
+            elif obj == float('-inf'):
+                return "-Infinity"
+            else:
+                return obj
+        elif isinstance(obj, (int, str, bool, type(None))):
+            return obj
+        else:
+            # For other types, try to convert to string
+            return str(obj)
+    
     def parse_mavlink_message(self, msg) -> Dict[str, Any]:
         """Convert MAVLink message to JSON-serializable dictionary"""
         try:
             msg_dict = msg.to_dict()
+            
+            # Convert to JSON-serializable format
+            msg_dict = self._make_json_serializable(msg_dict)
             
             # Add metadata
             result = {
@@ -74,6 +101,11 @@ class MAVLinkGateway:
             self._update_drone_state(msg)
             
             return result
+        except (AttributeError, KeyError, ValueError) as e:
+            # Silently skip messages that can't be parsed (e.g., unsupported types)
+            msg_type = msg.get_type() if hasattr(msg, 'get_type') else 'unknown'
+            self.logger.debug(f"Skipping unsupported message {msg_type}: {e}")
+            return {}
         except Exception as e:
             self.logger.error(f"Error parsing MAVLink message: {e}")
             return {}
@@ -140,12 +172,17 @@ class MAVLinkGateway:
                 msg = self.mavlink_connection.recv_match(blocking=False, timeout=0.01)
                 
                 if msg:
-                    # Filter messages if configured
-                    if (self.config.MESSAGE_FILTER and 
-                        msg.get_type() not in self.config.MESSAGE_FILTER):
+                    msg_type = msg.get_type()
+                    
+                    # Skip ignored messages
+                    if self.config.MESSAGE_IGNORE and msg_type in self.config.MESSAGE_IGNORE:
                         continue
                     
-                    # Parse and broadcast
+                    # Filter messages if configured
+                    if self.config.MESSAGE_FILTER and msg_type not in self.config.MESSAGE_FILTER:
+                        continue
+                    
+                    # Parse and broadcast to WebSocket clients
                     parsed_msg = self.parse_mavlink_message(msg)
                     if parsed_msg:
                         await self.broadcast(parsed_msg)
@@ -174,7 +211,19 @@ class MAVLinkGateway:
         if not self.clients:
             return
         
-        message_json = json.dumps(message)
+        try:
+            # Use ensure_ascii=False and allow_nan=False for strict JSON compliance
+            message_json = json.dumps(message, ensure_ascii=False, allow_nan=False)
+        except (TypeError, ValueError) as e:
+            self.logger.error(f"Failed to serialize message to JSON: {e}")
+            self.logger.debug(f"Problematic message type: {message.get('type', 'unknown')}")
+            # Try to identify the problematic field
+            try:
+                self.logger.debug(f"Message keys: {list(message.keys())}")
+            except:
+                pass
+            return
+        
         disconnected = set()
         
         for client in self.clients:

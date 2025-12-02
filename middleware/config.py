@@ -8,7 +8,8 @@ class Config:
     """Configuration class for MAVLink to WebSocket gateway"""
     
     # MAVLink Connection
-    MAVLINK_CONNECTION: str = os.getenv('MAVLINK_CONNECTION', 'udpin:0.0.0.0:14550')
+    # Use port 14551 to avoid conflict with QGroundControl (14550)
+    MAVLINK_CONNECTION: str = os.getenv('MAVLINK_CONNECTION', 'udpin:0.0.0.0:14551')
     
     # WebSocket Server
     WEBSOCKET_HOST: str = os.getenv('WEBSOCKET_HOST', '0.0.0.0')
@@ -19,10 +20,14 @@ class Config:
     
     # MAVLink message filter (empty list means all messages)
     # Example: ['HEARTBEAT', 'GPS_RAW_INT', 'ATTITUDE', 'GLOBAL_POSITION_INT']
+    # Add 'ODOMETRY' to filter if you see warnings about unsupported estimator types
     MESSAGE_FILTER: list = []
     
+    # Messages to ignore/skip (useful for problematic message types)
+    MESSAGE_IGNORE: list = []  # Example: ['ODOMETRY'] to skip odometry messages
+    
     # Update rate limiting (messages per second, 0 = no limit)
-    MAX_MESSAGE_RATE: int = 50
+    MAX_MESSAGE_RATE: int = 500
     
     @classmethod
     def from_env(cls, env_file: Optional[str] = None):
