@@ -130,7 +130,8 @@ class MAVLinkGateway:
                 'lon': msg.lon / 1e7,
                 'alt': msg.alt / 1000.0,
                 'fix_type': msg.fix_type,
-                'satellites_visible': msg.satellites_visible
+                'satellites_visible': msg.satellites_visible,
+                'groundspeed': msg.vel / 100.0
             }
         
         elif msg_type == 'GLOBAL_POSITION_INT':

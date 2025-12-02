@@ -12,184 +12,208 @@
         }
         
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            font-family: 'Courier New', monospace;
+            background: #000;
+            color: #0f0;
             min-height: 100vh;
             padding: 20px;
         }
         
         .container {
-            max-width: 1200px;
+            max-width: 1400px;
             margin: 0 auto;
         }
         
         header {
-            background: white;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            background: #000;
+            border: 2px solid #0f0;
+            padding: 15px;
             margin-bottom: 20px;
         }
         
         h1 {
-            color: #333;
+            color: #0f0;
             margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        
+        header p {
+            color: #0f0;
+            opacity: 0.8;
         }
         
         .status {
             display: inline-block;
-            padding: 5px 15px;
-            border-radius: 20px;
-            font-size: 14px;
+            padding: 3px 10px;
+            border: 1px solid #0f0;
+            font-size: 12px;
             font-weight: bold;
+            margin-top: 10px;
         }
         
         .status.connected {
-            background: #10b981;
-            color: white;
+            background: #0f0;
+            color: #000;
         }
         
         .status.disconnected {
-            background: #ef4444;
-            color: white;
+            background: #000;
+            color: #f00;
+            border-color: #f00;
         }
         
         .status.connecting {
-            background: #f59e0b;
-            color: white;
+            background: #000;
+            color: #ff0;
+            border-color: #ff0;
         }
         
         .controls {
-            background: white;
+            background: #000;
+            border: 2px solid #0f0;
             padding: 15px;
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             margin-bottom: 20px;
         }
         
         .controls input {
-            padding: 8px 12px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
+            padding: 5px 10px;
+            border: 1px solid #0f0;
+            background: #000;
+            color: #0f0;
+            font-family: 'Courier New', monospace;
             margin-right: 10px;
             width: 300px;
         }
         
         .controls button {
-            padding: 8px 20px;
-            border: none;
-            border-radius: 5px;
-            background: #667eea;
-            color: white;
+            padding: 5px 15px;
+            border: 1px solid #0f0;
+            background: #000;
+            color: #0f0;
             cursor: pointer;
+            font-family: 'Courier New', monospace;
             font-weight: bold;
             margin-right: 10px;
+            text-transform: uppercase;
         }
         
         .controls button:hover {
-            background: #5568d3;
+            background: #0f0;
+            color: #000;
         }
         
         .controls button:disabled {
-            background: #ccc;
+            border-color: #333;
+            color: #333;
             cursor: not-allowed;
+        }
+        
+        .controls button:disabled:hover {
+            background: #000;
+            color: #333;
         }
         
         .grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 20px;
+            gap: 15px;
             margin-bottom: 20px;
         }
         
         .card {
-            background: white;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            background: #000;
+            border: 2px solid #0f0;
+            padding: 15px;
         }
         
         .card h2 {
-            color: #667eea;
+            color: #0f0;
             margin-bottom: 15px;
-            font-size: 18px;
-            display: flex;
-            align-items: center;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-bottom: 1px solid #0f0;
+            padding-bottom: 5px;
         }
         
         .card h2::before {
-            content: '';
-            display: inline-block;
-            width: 4px;
-            height: 20px;
-            background: #667eea;
-            margin-right: 10px;
-            border-radius: 2px;
+            content: '> ';
+            color: #0f0;
         }
         
         .data-row {
             display: flex;
             justify-content: space-between;
-            padding: 8px 0;
-            border-bottom: 1px solid #f0f0f0;
-        }
-        
-        .data-row:last-child {
-            border-bottom: none;
+            padding: 5px 0;
+            font-size: 13px;
         }
         
         .data-label {
-            color: #666;
-            font-weight: 500;
+            color: #0f0;
+            opacity: 0.8;
+        }
+        
+        .data-label::after {
+            content: ':';
         }
         
         .data-value {
-            color: #333;
+            color: #0f0;
             font-weight: bold;
-            font-family: 'Courier New', monospace;
         }
         
         .log {
-            background: white;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            background: #000;
+            border: 2px solid #0f0;
+            padding: 15px;
         }
         
         .log h2 {
-            color: #667eea;
+            color: #0f0;
             margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-bottom: 1px solid #0f0;
+            padding-bottom: 5px;
+        }
+        
+        .log h2::before {
+            content: '> ';
         }
         
         #messageLog {
-            background: #1e1e1e;
-            color: #d4d4d4;
-            padding: 15px;
-            border-radius: 5px;
+            background: #000;
+            color: #0f0;
+            border: 1px solid #0f0;
+            padding: 10px;
             height: 300px;
             overflow-y: auto;
             font-family: 'Courier New', monospace;
-            font-size: 12px;
-            line-height: 1.6;
+            font-size: 11px;
+            line-height: 1.5;
         }
         
         .log-entry {
-            margin-bottom: 5px;
+            margin-bottom: 3px;
         }
         
         .log-time {
-            color: #858585;
+            color: #0f0;
+            opacity: 0.6;
         }
         
         .log-type {
-            color: #4ec9b0;
+            color: #0f0;
             font-weight: bold;
         }
         
         .stats {
             display: flex;
             justify-content: space-around;
-            margin-top: 15px;
+            margin-bottom: 15px;
+            border: 1px solid #0f0;
+            padding: 10px;
         }
         
         .stat {
@@ -197,22 +221,37 @@
         }
         
         .stat-value {
-            font-size: 24px;
+            font-size: 20px;
             font-weight: bold;
-            color: #667eea;
+            color: #0f0;
         }
         
         .stat-label {
-            color: #666;
-            font-size: 12px;
+            color: #0f0;
+            font-size: 10px;
             margin-top: 5px;
+            text-transform: uppercase;
+            opacity: 0.8;
+        }
+        
+        /* Scrollbar styling */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: #000;
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: #0f0;
         }
     </style>
 </head>
 <body>
     <div class="container">
         <header>
-            <h1>🚁 LDT MAVLink Gateway - Web Client Test</h1>
+            <h1>LDT MAVLink Gateway - Web Client Test</h1>
             <p>Real-time MAVLink telemetry via WebSocket</p>
             <div style="margin-top: 10px;">
                 Status: <span class="status disconnected" id="connectionStatus">Disconnected</span>
@@ -229,7 +268,23 @@
         
         <div class="grid">
             <div class="card">
-                <h2>📍 Position</h2>
+                <h2>HEARTBEAT</h2>
+                <div class="data-row">
+                    <span class="data-label">Type:</span>
+                    <span class="data-value" id="vehicleType">--</span>
+                </div>
+                <div class="data-row">
+                    <span class="data-label">Autopilot:</span>
+                    <span class="data-value" id="autopilot">--</span>
+                </div>
+                <div class="data-row">
+                    <span class="data-label">System Status:</span>
+                    <span class="data-value" id="systemStatus">--</span>
+                </div>
+            </div>
+            
+            <div class="card">
+                <h2>GLOBAL_POSITION_INT</h2>
                 <div class="data-row">
                     <span class="data-label">Latitude:</span>
                     <span class="data-value" id="lat">--</span>
@@ -250,10 +305,14 @@
                     <span class="data-label">Heading:</span>
                     <span class="data-value" id="heading">--</span>
                 </div>
+                <div class="data-row">
+                    <span class="data-label">Velocity (vx, vy, vz):</span>
+                    <span class="data-value" id="velocity">--</span>
+                </div>
             </div>
             
             <div class="card">
-                <h2>🎯 Attitude</h2>
+                <h2>ATTITUDE</h2>
                 <div class="data-row">
                     <span class="data-label">Roll:</span>
                     <span class="data-value" id="roll">--</span>
@@ -269,7 +328,7 @@
             </div>
             
             <div class="card">
-                <h2>🛰️ GPS</h2>
+                <h2>GPS_RAW_INT</h2>
                 <div class="data-row">
                     <span class="data-label">Fix Type:</span>
                     <span class="data-value" id="fixType">--</span>
@@ -278,10 +337,14 @@
                     <span class="data-label">Satellites:</span>
                     <span class="data-value" id="satellites">--</span>
                 </div>
+                <div class="data-row">
+                    <span class="data-label">Ground Speed:</span>
+                    <span class="data-value" id="groundspeed">--</span>
+                </div>
             </div>
             
             <div class="card">
-                <h2>🔋 Battery</h2>
+                <h2>BATTERY_STATUS</h2>
                 <div class="data-row">
                     <span class="data-label">Voltage:</span>
                     <span class="data-value" id="voltage">--</span>
@@ -298,7 +361,7 @@
         </div>
         
         <div class="log">
-            <h2>📊 Message Log</h2>
+            <h2>Message Log</h2>
             <div class="stats">
                 <div class="stat">
                     <div class="stat-value" id="totalMessages">0</div>
@@ -406,6 +469,8 @@
                 // Update UI based on message type
                 if (type === 'DRONE_STATE') {
                     updateDroneState(message.data);
+                } else if (type === 'HEARTBEAT') {
+                    updateHeartbeat(message.data);
                 } else if (type === 'GLOBAL_POSITION_INT') {
                     updatePosition(message.data);
                 } else if (type === 'ATTITUDE') {
@@ -416,9 +481,9 @@
                     updateBattery(message.data);
                 }
                 
-                // Add to log (limit verbosity)
-                if (['DRONE_STATE', 'HEARTBEAT', 'GPS_RAW_INT'].includes(type)) {
-                    addLog(type, JSON.stringify(message.data).substring(0, 100));
+                // Add to log
+                if (['DRONE_STATE', 'HEARTBEAT', 'GPS_RAW_INT', 'GLOBAL_POSITION_INT', 'ATTITUDE', 'BATTERY_STATUS'].includes(type)) {
+                    addLog(type, JSON.stringify(message.data));
                 }
                 
             } catch (error) {
@@ -427,44 +492,129 @@
         }
         
         function updateDroneState(state) {
+            // DRONE_STATE structure from gateway's _update_drone_state
+            if (state.heartbeat) {
+                updateHeartbeat(state.heartbeat);
+            }
             if (state.position) {
-                updatePosition(state.position);
+                // position: {lat, lon, alt, relative_alt, vx, vy, vz, heading} - already converted
+                document.getElementById('lat').textContent = state.position.lat?.toFixed(6) || '--';
+                document.getElementById('lon').textContent = state.position.lon?.toFixed(6) || '--';
+                document.getElementById('alt').textContent = state.position.alt ? state.position.alt.toFixed(1) + 'm' : '--';
+                document.getElementById('relAlt').textContent = state.position.relative_alt ? state.position.relative_alt.toFixed(1) + 'm' : '--';
+                document.getElementById('heading').textContent = state.position.heading ? state.position.heading.toFixed(1) + '°' : '--';
+                
+                // Display velocity
+                if (state.position.vx !== undefined && state.position.vy !== undefined && state.position.vz !== undefined) {
+                    document.getElementById('velocity').textContent = 
+                        `${state.position.vx.toFixed(2)}, ${state.position.vy.toFixed(2)}, ${state.position.vz.toFixed(2)} m/s`;
+                }
             }
             if (state.attitude) {
-                updateAttitude(state.attitude);
+                // attitude: {roll, pitch, yaw, rollspeed, pitchspeed, yawspeed}
+                document.getElementById('roll').textContent = state.attitude.roll?.toFixed(3) + ' rad' || '--';
+                document.getElementById('pitch').textContent = state.attitude.pitch?.toFixed(3) + ' rad' || '--';
+                document.getElementById('yaw').textContent = state.attitude.yaw?.toFixed(3) + ' rad' || '--';
             }
             if (state.gps) {
-                updateGPS(state.gps);
+                // gps: {lat, lon, alt, fix_type, satellites_visible, groundspeed} - already converted
+                const fixTypes = {0: 'No Fix', 1: 'No Fix', 2: '2D', 3: '3D', 4: 'DGPS', 5: 'RTK Float', 6: 'RTK Fixed'};
+                document.getElementById('fixType').textContent = fixTypes[state.gps.fix_type] || '--';
+                document.getElementById('satellites').textContent = state.gps.satellites_visible || '--';
+                document.getElementById('groundspeed').textContent = state.gps.groundspeed ? state.gps.groundspeed.toFixed(2) + ' m/s' : '--';
+                
+                // Update position from GPS if position not available
+                if (!state.position && state.gps.lat !== undefined) {
+                    document.getElementById('lat').textContent = state.gps.lat?.toFixed(6) || '--';
+                    document.getElementById('lon').textContent = state.gps.lon?.toFixed(6) || '--';
+                    document.getElementById('alt').textContent = state.gps.alt ? state.gps.alt.toFixed(1) + 'm' : '--';
+                }
             }
             if (state.battery) {
-                updateBattery(state.battery);
+                // battery: {voltage, current, remaining}
+                document.getElementById('voltage').textContent = state.battery.voltage ? state.battery.voltage.toFixed(2) + 'V' : '--';
+                document.getElementById('current').textContent = state.battery.current ? state.battery.current.toFixed(2) + 'A' : '--';
+                document.getElementById('batteryRemaining').textContent = state.battery.remaining ? state.battery.remaining + '%' : '--';
             }
+        }
+        
+        function updateHeartbeat(data) {
+            // For HEARTBEAT messages
+            const vehicleTypes = {0: 'Generic', 1: 'Fixed Wing', 2: 'Quadrotor', 3: 'Coaxial', 4: 'Helicopter', 6: 'GCS', 13: 'Hexarotor', 14: 'Octorotor'};
+            const autopilotTypes = {0: 'Generic', 3: 'APM', 4: 'OpenPilot', 12: 'PX4'};
+            const statusTypes = {0: 'UNINIT', 1: 'BOOT', 2: 'CALIBRATING', 3: 'STANDBY', 4: 'ACTIVE', 5: 'CRITICAL', 6: 'EMERGENCY', 7: 'POWEROFF', 8: 'FLIGHT_TERMINATION'};
+            
+            document.getElementById('vehicleType').textContent = vehicleTypes[data.type] || data.type || '--';
+            document.getElementById('autopilot').textContent = autopilotTypes[data.autopilot] || data.autopilot || '--';
+            document.getElementById('systemStatus').textContent = statusTypes[data.system_status] || data.system_status || '--';
         }
         
         function updatePosition(data) {
-            document.getElementById('lat').textContent = data.lat?.toFixed(6) || '--';
-            document.getElementById('lon').textContent = data.lon?.toFixed(6) || '--';
-            document.getElementById('alt').textContent = data.alt ? data.alt.toFixed(1) + 'm' : '--';
-            document.getElementById('relAlt').textContent = data.relative_alt ? data.relative_alt.toFixed(1) + 'm' : '--';
-            document.getElementById('heading').textContent = data.heading ? data.heading.toFixed(1) + '°' : '--';
+            // For GLOBAL_POSITION_INT messages - use converted values if available
+            const lat = data.lat_deg ?? (data.lat ? data.lat / 1e7 : null);
+            const lon = data.lon_deg ?? (data.lon ? data.lon / 1e7 : null);
+            const alt = data.alt_m ?? (data.alt ? data.alt / 1000.0 : null);
+            const relAlt = data.relative_alt_m ?? (data.relative_alt ? data.relative_alt / 1000.0 : null);
+            const heading = data.hdg_deg ?? data.heading ?? (data.hdg ? data.hdg / 100.0 : null);
+            const vx = data.vx_ms ?? (data.vx ? data.vx / 100.0 : null);
+            const vy = data.vy_ms ?? (data.vy ? data.vy / 100.0 : null);
+            const vz = data.vz_ms ?? (data.vz ? data.vz / 100.0 : null);
+            
+            document.getElementById('lat').textContent = lat ? lat.toFixed(6) : '--';
+            document.getElementById('lon').textContent = lon ? lon.toFixed(6) : '--';
+            document.getElementById('alt').textContent = alt ? alt.toFixed(1) + 'm' : '--';
+            document.getElementById('relAlt').textContent = relAlt ? relAlt.toFixed(1) + 'm' : '--';
+            document.getElementById('heading').textContent = heading ? heading.toFixed(1) + '°' : '--';
+            
+            // Display velocity
+            if (vx !== null && vy !== null && vz !== null) {
+                document.getElementById('velocity').textContent = 
+                    `${vx.toFixed(2)}, ${vy.toFixed(2)}, ${vz.toFixed(2)} m/s`;
+            }
         }
         
         function updateAttitude(data) {
+            // For ATTITUDE messages
             document.getElementById('roll').textContent = data.roll?.toFixed(3) + ' rad' || '--';
             document.getElementById('pitch').textContent = data.pitch?.toFixed(3) + ' rad' || '--';
             document.getElementById('yaw').textContent = data.yaw?.toFixed(3) + ' rad' || '--';
         }
         
         function updateGPS(data) {
+            // For GPS_RAW_INT messages - use converted values if available
             const fixTypes = {0: 'No Fix', 1: 'No Fix', 2: '2D', 3: '3D', 4: 'DGPS', 5: 'RTK Float', 6: 'RTK Fixed'};
             document.getElementById('fixType').textContent = fixTypes[data.fix_type] || '--';
             document.getElementById('satellites').textContent = data.satellites_visible || '--';
+            
+            // Ground speed (if available) - vel is already in cm/s from MAVLink, convert to m/s
+            const groundspeed = data.groundspeed ?? (data.vel ? data.vel / 100.0 : null);
+            if (groundspeed !== null && groundspeed !== undefined) {
+                document.getElementById('groundspeed').textContent = groundspeed.toFixed(2) + ' m/s';
+            } else {
+                document.getElementById('groundspeed').textContent = '--';
+            }
+            
+            // Also update position from GPS_RAW_INT
+            if (data.lat !== undefined) {
+                const lat = data.lat_deg ?? (data.lat / 1e7);
+                const lon = data.lon_deg ?? (data.lon / 1e7);
+                const alt = data.alt_m ?? (data.alt / 1000.0);
+                
+                document.getElementById('lat').textContent = lat.toFixed(6);
+                document.getElementById('lon').textContent = lon.toFixed(6);
+                document.getElementById('alt').textContent = alt.toFixed(1) + 'm';
+            }
         }
         
         function updateBattery(data) {
-            document.getElementById('voltage').textContent = data.voltage ? data.voltage.toFixed(2) + 'V' : '--';
-            document.getElementById('current').textContent = data.current ? data.current.toFixed(2) + 'A' : '--';
-            document.getElementById('batteryRemaining').textContent = data.remaining ? data.remaining + '%' : '--';
+            // For BATTERY_STATUS messages
+            const voltage = data.voltage ?? (data.voltages?.[0] / 1000.0);
+            const current = data.current ?? (data.current_battery !== -1 ? data.current_battery / 100.0 : null);
+            const remaining = data.remaining ?? data.battery_remaining;
+            
+            document.getElementById('voltage').textContent = voltage ? voltage.toFixed(2) + 'V' : '--';
+            document.getElementById('current').textContent = current ? current.toFixed(2) + 'A' : '--';
+            document.getElementById('batteryRemaining').textContent = remaining ? remaining + '%' : '--';
         }
         
         function addLog(type, message) {

@@ -140,11 +140,12 @@ class TestClient:
     
     def display_position(self, data: dict):
         """Display position message"""
-        lat = data.get('lat', 0) / 1e7
-        lon = data.get('lon', 0) / 1e7
-        alt = data.get('alt', 0) / 1000.0
-        rel_alt = data.get('relative_alt', 0) / 1000.0
-        hdg = data.get('hdg', 0) / 100.0
+        # Use converted values if available
+        lat = data.get('lat_deg', data.get('lat', 0) / 1e7)
+        lon = data.get('lon_deg', data.get('lon', 0) / 1e7)
+        alt = data.get('alt_m', data.get('alt', 0) / 1000.0)
+        rel_alt = data.get('relative_alt_m', data.get('relative_alt', 0) / 1000.0)
+        hdg = data.get('hdg_deg', data.get('hdg', 0) / 100.0)
         
         print(f"📍 POSITION - Lat: {lat:.6f}, Lon: {lon:.6f}, "
               f"Alt: {alt:.1f}m, Rel: {rel_alt:.1f}m, Hdg: {hdg:.1f}°")
@@ -159,9 +160,10 @@ class TestClient:
     
     def display_gps(self, data: dict):
         """Display GPS message"""
-        lat = data.get('lat', 0) / 1e7
-        lon = data.get('lon', 0) / 1e7
-        alt = data.get('alt', 0) / 1000.0
+        # Use converted values if available
+        lat = data.get('lat_deg', data.get('lat', 0) / 1e7)
+        lon = data.get('lon_deg', data.get('lon', 0) / 1e7)
+        alt = data.get('alt_m', data.get('alt', 0) / 1000.0)
         fix_type = data.get('fix_type', 0)
         sats = data.get('satellites_visible', 0)
         
